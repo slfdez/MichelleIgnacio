@@ -427,32 +427,15 @@
   }());
     
   const track = document.getElementById('track');
-  const playPauseBtn = document.getElementById('play-pause');
-  const progress = document.getElementById('progress');
+const playPauseBtn = document.getElementById('play-pause');
+const progress = document.getElementById('progress');
 
-  // Attempt autoplay
-  track.play().then(() => {
-      playPauseBtn.textContent = 'Pausa'; // Update button if autoplay works
-  }).catch(() => {
-      console.log("Autoplay was blocked by the browser.");
-  });
-
-  playPauseBtn.addEventListener('click', () => {
-      if (track.paused) {
-          track.play();
-          playPauseBtn.textContent = 'Pausa';
-      } else {
-          track.pause();
-          playPauseBtn.textContent = 'Reproducir';
-      }
-  });
-
-  // Update progress bar as the track plays
-  track.addEventListener('timeupdate', () => {
-      progress.value = (track.currentTime / track.duration) * 100;
-  });
-
-  // Allow seeking by moving the progress bar
-  progress.addEventListener('input', () => {
-      track.currentTime = (progress.value / 100) * track.duration;
-  });
+playPauseBtn.addEventListener('click', () => {
+  if (track.paused) {
+    track.play();
+    playPauseBtn.textContent = 'Pausa';
+  } else {
+    track.pause();
+    playPauseBtn.textContent = 'Reproducir';
+  }
+});
